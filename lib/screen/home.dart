@@ -21,7 +21,7 @@ class _HomeState extends State<Home> {
         canScroll: true,
         autoScroll: false,
         showIndicator: true,
-
+        enableIndicatorTapControl: true,
         items: [
           LCarouselItem(
             child: CircularTimer(),
@@ -31,42 +31,6 @@ class _HomeState extends State<Home> {
           ),
         ],
       ),
-
-      /*Container(
-        child: ListView(
-          scrollDirection: Axis.horizontal,
-          children: [
-            Carousel
-            Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: <Widget>[
-                Container(
-                  child: TextTimer(),
-                ),
-              ],
-            ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: <Widget>[
-                Container(
-                  child: CircularTimer(),
-                ),
-              ],
-            )
-          ],
-        ),
-      ),
-*/
-      /* Padding(
-        padding: const EdgeInsets.all(28.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            TextTimer(),
-          ],
-        ),
-      ),*/
     );
   }
 }
