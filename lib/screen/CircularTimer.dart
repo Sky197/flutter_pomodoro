@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:liquid_progress_indicator/liquid_progress_indicator.dart';
+import 'package:liquid_ui/liquid_ui.dart';
 
 AnimationController animationController;
 
@@ -31,7 +33,7 @@ class AnimatedLiquidCircularProgressIndicatorState
     super.initState();
     animationController = AnimationController(
       vsync: this,
-      duration: Duration(seconds: 1),
+      duration: Duration(seconds: 10),
     );
 
     animationController.addListener(() => setState(() {}));
@@ -45,32 +47,95 @@ class AnimatedLiquidCircularProgressIndicatorState
     super.dispose();
   }
 
+  Duration time = Duration(minutes: 25);
+
+  String getDisplayTime(Duration time) {
+    int minutes = time.inMinutes;
+    int seconds = (time.inSeconds - (time.inMinutes * 60));
+    return '$minutes:${seconds.toString().padLeft(2, '0')}';
+  }
+
   @override
   Widget build(BuildContext context) {
     final percentage = animationController.value * 100;
     return Column(
       children: <Widget>[
-        Center(
-          child: SizedBox(
-            width: 300.0,
-            height: 300.0,
-            child: LiquidCircularProgressIndicator(
-              value: animationController.value,
-              backgroundColor: Colors.white,
-              valueColor: AlwaysStoppedAnimation(Colors.redAccent),
-              center: Text(
-                "${percentage.toStringAsFixed(0)}%",
-                style: TextStyle(
-                  color: Colors.black87,
-                  fontSize: 40.0,
-                  fontWeight: FontWeight.bold,
+        const Divider(
+          color: Colors.white,
+          height: 20,
+          thickness: 2,
+          indent: 20,
+          endIndent: 20,
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: <Widget>[
+            RaisedButton(
+              color: Colors.white,
+              textColor: Colors.grey[900],
+              animationDuration: Duration(seconds: 3),
+              hoverElevation: 50,
+              onPressed: () {},
+              child: Text('Pomodoro'),
+            ),
+            RaisedButton(
+              color: Colors.white,
+              textColor: Colors.grey[900],
+              animationDuration: Duration(seconds: 3),
+              hoverElevation: 50,
+              onPressed: () {},
+              child: Text('Short Break'),
+            ),
+            RaisedButton(
+              color: Colors.white,
+              textColor: Colors.grey[900],
+              animationDuration: Duration(seconds: 3),
+              hoverElevation: 50,
+              onPressed: () {},
+              child: Text('Long Break'),
+            ),
+          ],
+        ),
+        const Divider(
+          color: Colors.white,
+          height: 20,
+          thickness: 2,
+          indent: 20,
+          endIndent: 20,
+        ),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Center(
+            child: SizedBox(
+              width: 300.0,
+              height: 300.0,
+              child: LiquidCircularProgressIndicator(
+                borderColor: Colors.white,
+                borderWidth: 3,
+                value: animationController.value,
+                backgroundColor: Colors.redAccent,
+                valueColor: AlwaysStoppedAnimation(Colors.white),
+                center: Text(
+                  "${percentage.toStringAsFixed(0)}%",
+                  style: TextStyle(
+                    color: Colors.grey[900],
+                    fontSize: 80.0,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
             ),
           ),
         ),
+        const Divider(
+          color: Colors.white,
+          height: 20,
+          thickness: 2,
+          indent: 20,
+          endIndent: 20,
+        ),
         Padding(
-          padding: const EdgeInsets.only(top:32.0),
+          padding: const EdgeInsets.all(8.0),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
@@ -100,6 +165,13 @@ class AnimatedLiquidCircularProgressIndicatorState
               ),
             ],
           ),
+        ),
+        const Divider(
+          color: Colors.white,
+          height: 20,
+          thickness: 2,
+          indent: 20,
+          endIndent: 20,
         ),
       ],
     );

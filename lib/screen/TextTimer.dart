@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_pomodoro/widget/TimerText.dart';
+import 'package:liquid_ui/liquid_ui.dart';
 
 class TextTimer extends StatefulWidget {
   @override
@@ -32,18 +33,19 @@ class _TextTimerState extends State<TextTimer> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top:200),
+      padding: const EdgeInsets.only(top: 200),
       child: Column(children: <Widget>[
         TimerText(
           stopwatch: watch,
         ),
         Padding(
-          padding: const EdgeInsets.only(top:135),
+          padding: const EdgeInsets.only(top: 135),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
               FloatingActionButton(
                 child: Icon(Icons.forward),
+                hoverElevation: 1000,
                 onPressed: () {
                   setState(() {
                     watch.start();

@@ -20,17 +20,14 @@ class TimerTextState extends State<TimerText> {
 
   void callback(Timer timer) {
     if (stopwatch.isRunning) {
-      setState(() {
-
-
-      });
+      setState(() {});
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    final TextStyle timerTextStyle =
-        const TextStyle(fontSize: 90.0, fontFamily: "Open Sans");
+    final TextStyle timerTextStyle = const TextStyle(
+        fontSize: 90.0, fontFamily: "Open Sans", color: Colors.white);
     String formattedTime =
         TimerTextFormatter.format(stopwatch.elapsedMilliseconds);
     return new Text(formattedTime, style: timerTextStyle);
